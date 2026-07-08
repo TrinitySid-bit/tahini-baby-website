@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #2d5123;
+  --green-light: #3d6b30;
+  --green-dark: #1f3a18;
+  --pink: #f4cce2;
+  --pink-deep: #e8a0bf;
+  --pink-pale: #fae6f0;
+  --sand: #f7f1eb;
+  --sand-light: #fbf8f5;
+  --cream: #fffdf9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--sand);
+  color: var(--green);
+  font-family: var(--font-body), Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--pink);
+}
+
+@layer components {
+  .brand-display {
+    font-family: var(--font-display), "Arial Black", Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+
+  .brand-condensed {
+    font-family: var(--font-condensed), "Arial Narrow", Arial, sans-serif;
+    letter-spacing: 0.08em;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24;
+  }
+
+  .focus-ring {
+    @apply outline-none ring-offset-2 ring-offset-pink-baby focus-visible:ring-2 focus-visible:ring-green-baby;
+  }
+
+  .hard-button {
+    @apply focus-ring inline-flex min-h-12 items-center justify-center rounded-full border-2 border-green-baby bg-green-baby px-6 py-3 text-center font-condensed text-base uppercase tracking-[0.08em] text-pink-baby shadow-[0_12px_26px_rgba(45,81,35,0.18)] transition hover:-translate-y-0.5 hover:shadow-hard disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+
+  .ghost-button {
+    @apply focus-ring inline-flex min-h-12 items-center justify-center rounded-full border-2 border-green-baby bg-cream/70 px-6 py-3 text-center font-condensed text-base uppercase tracking-[0.08em] text-green-baby transition hover:-translate-y-0.5 hover:bg-green-baby hover:text-pink-baby;
+  }
+
+  .eyebrow {
+    @apply brand-condensed text-sm uppercase tracking-[0.22em] text-green-baby/55;
+  }
+
+  .marquee-track {
+    animation: marquee 46s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
